@@ -1,6 +1,5 @@
 var GAMECLICK = 0;
 var stop_counter = 50;
-//var bunnies = [];
 var bunnies = {4:0, 5:0, 6:0,7:0};
 var total_animal_obj = {1:1,2:2,3:3,4:4,5:5,6:6,7:7};
 var total_animal_array = [];
@@ -20,12 +19,10 @@ $('document').ready(function(){
           FARMERCLICKS++;
           BUNNYCLICK++;
           COWSCLICK ++;
-          
-          total_animal = Object.keys(total_animal_obj).length;
-          total_animal_array = Object.values(total_animal_obj);
-          var random_num 	= total_animal_array[Math.floor(Math.random()*total_animal_array.length)];
-          $('#tr'+GAMECLICK).css('background-color','#ffff99');
+          var total_animal_array = Object.values(total_animal_obj);
+          var random_num = total_animal_array[Math.floor(Math.random()*total_animal_array.length)];
           var randomtd = $('#tr'+GAMECLICK+' td').eq(random_num);
+          $('#tr'+GAMECLICK).css('background-color','#ffff99');
           $(randomtd).actionOn();
       }else{
           var result_msg = checkWhoisRemained();
@@ -90,6 +87,7 @@ function changeScoreBoard(animal_number){
         $('#farmer_dead').text('1').css('background-color','red');
         $('#totalClicks').text(GAMECLICK);
         var msg = 'Game is Over! You loss the Game! , Please try you luck again.';
+        $('#game_status strong').text(msg);
         alert(msg);
     }
     if(animal_number>1 && animal_number<4){
