@@ -83,7 +83,6 @@ function checkWhoIsDead(obj_animal){
 }
 function changeScoreBoard(animal_number){
   $('#th'+animal_number).css('background-color','red');
-  
     if(animal_number==1){
         $('.animal-all').css('background-color','red');
         $('#game_status strong').text(msg);
