@@ -22,7 +22,7 @@ class farmClass{
     function get_table_header(){
         $str_th = '';
         foreach($this->array_all as $k=>$v){
-            $str_th .= '<th>'.$v.'</th>';
+            $str_th .= '<th id="th'.$k.'" class="animal-all" >'.$v.'</th>';
         }
         return $str_th;
     }
