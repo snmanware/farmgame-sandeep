@@ -71,7 +71,7 @@ function checkWhoisRemained(){
 function checkWhoIsDead(obj_animal){
     $.each(obj_animal,function(i,v){ 
         if(obj_animal[i]==0){
-            $("td[data-number='"+i+"']").css('background-color','green');
+            $("td[data-number='"+i+"']").css('background-color','red');
             $("td[data-number='"+i+"']").addClass('dead');
             delete obj_animal[i];
             delete total_animal_obj[i];
