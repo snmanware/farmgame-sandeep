@@ -29,7 +29,7 @@ class farmClass{
 
     function create_table(){
       $str_table='';
-      $str_table = '<table id="formtable" class="" border="1" width="800">';
+      $str_table = '';
       $str_table_header = $this->get_table_header();
       $str_table .='<tr>'.$str_table_header.'</tr>';
       for ($i = 1; $i <= $this->total_round; $i++) {
@@ -39,7 +39,7 @@ class farmClass{
         $str_table .='<tr  data-round="round" id="tr'.$i.'" >'.$str_table_td.'</tr>';
         $this->array_all_id[$i] = $this->array_tr_id;
       }
-      $str_table .= '</table>';
+      $str_table .= '';
       return $str_table;
     }
   }
