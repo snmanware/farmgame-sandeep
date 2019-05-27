@@ -57,14 +57,13 @@ $.fn.actionOn = function(){
 }
 function checkWhoisRemained(){
   //console.log('total_animal_obj',total_animal_obj);
-  var lb = Object.keys(bunnies).length; // count remained bunnies
-  var lc = Object.keys(cows).length;// count remained cows
+    var lb = Object.keys(bunnies).length; // count remained bunnies
+    var lc = Object.keys(cows).length;// count remained cows
     
-  if(lb >0  && lc>0){
-      msg = 'Conratulations! You are the Winner !';
+    if(lb >0  && lc>0){
+        msg = 'Conratulations! You are the Winner !';
     }else{
       var msg ='You loss the game! To win you need a cow and a bunnie alive';
-      
     }
     alert(msg);
 }
