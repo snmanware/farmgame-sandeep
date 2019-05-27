@@ -41,7 +41,7 @@ $str_table = $f->create_table();
         </div>
         <div class="col-md-4">
             <div class="gameStatistics">
-                <h3>Game Statistics</h3>
+                <h3>Game Score board</h3>
                 <table width="100%" border="1">
                     <tr>
                         <th>Round </th>

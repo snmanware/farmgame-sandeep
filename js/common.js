@@ -20,6 +20,7 @@ $('document').ready(function(){
           FARMERCLICKS++;
           BUNNYCLICK++;
           COWSCLICK ++;
+          
           total_animal = Object.keys(total_animal_obj).length;
           total_animal_array = Object.values(total_animal_obj);
           var random_num 	= total_animal_array[Math.floor(Math.random()*total_animal_array.length)];
@@ -29,14 +30,14 @@ $('document').ready(function(){
       }else{
           var result_msg = checkWhoisRemained();
           $('#game_status strong').text(result_msg);
-          return false;
+          //return false;
       }
+      $('#totalClicks').text(GAMECLICK);
   });
 });
 
 $.fn.actionOn = function(){
     var actiontd = $(this);
-    $('#totalClicks').text(GAMECLICK);
     var data_num= actiontd.data('number');
     if(data_num>3) bunnies[data_num] = 1;
     if(data_num>1 && data_num<4) cows[data_num] = 1;
@@ -45,7 +46,6 @@ $.fn.actionOn = function(){
         checkWhoIsDead(bunnies);
         BUNNYCLICK=0;
     }
-    
     if(COWSCLICK==10){
         checkWhoIsDead(cows);
         COWSCLICK =0;
@@ -57,16 +57,16 @@ $.fn.actionOn = function(){
     actiontd.css('background-color','green').html('fed');
 }
 function checkWhoisRemained(){
+    var msg ='You loss the game! To win the game, you must have a Cow and a Bunny alive';
   //console.log('total_animal_obj',total_animal_obj);
     var lb = Object.keys(bunnies).length; // count remained bunnies
     var lc = Object.keys(cows).length;// count remained cows
-    
     if(lb >0  && lc>0){
         msg = 'Conratulations! You are the Winner !';
-    }else{
-      var msg ='You loss the game! To win you need a cow and a bunnie alive';
     }
     alert(msg);
+    $('#game_status strong').text(msg);
+
 }
 function checkWhoIsDead(obj_animal){
     $.each(obj_animal,function(i,v){ 
@@ -83,15 +83,15 @@ function checkWhoIsDead(obj_animal){
 }
 function changeScoreBoard(animal_number){
   $('#th'+animal_number).css('background-color','red');
+  
     if(animal_number==1){
         $('.animal-all').css('background-color','red');
-        var msg = 'Game is Over! You loss the Game! , Please try you luck again.';
         $('#game_status strong').text(msg);
-        alert(msg);
-
         $('#starGame').attr("disabled", true);
-            $('#farmer_dead').text('1').css('background-color','red');
-            $('#totalClicks').text(GAMECLICK);
+        $('#farmer_dead').text('1').css('background-color','red');
+        $('#totalClicks').text(GAMECLICK);
+        var msg = 'Game is Over! You loss the Game! , Please try you luck again.';
+        alert(msg);
     }
     if(animal_number>1 && animal_number<4){
         var cd = parseInt($('#cows_dead').text());
@@ -99,9 +99,9 @@ function changeScoreBoard(animal_number){
         $('#cows_dead').text(cd);
     }
     if(animal_number>3){
-      var bd = parseInt($('#bunnies_dead').text());
-      bd=bd+1;
-      $('#bunnies_dead').text(bd);
+        var bd = parseInt($('#bunnies_dead').text());
+        bd=bd+1;
+        $('#bunnies_dead').text(bd);
   }
 }
 
