@@ -45,6 +45,7 @@ $.fn.actionOn = function(){
         checkWhoIsDead(bunnies);
         BUNNYCLICK=0;
     }
+    
     if(COWSCLICK==10){
         checkWhoIsDead(cows);
         COWSCLICK =0;
