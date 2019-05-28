@@ -1,5 +1,5 @@
 var GAMECLICK = 0;
-var stop_counter = 49;
+var stop_counter = 50;
 //var bunnies = [];
 var bunnies = {4:0, 5:0, 6:0,7:0};
 var total_animal_obj = {1:1,2:2,3:3,4:4,5:5,6:6,7:7};
@@ -16,21 +16,19 @@ var ANIMAL_STATUS = 0;
 $('document').ready(function(){
   $('#starGame').on('click',function(e){
       if(GAMECLICK<stop_counter){
-          GAMECLICK++;
-          FARMERCLICKS++;
-          BUNNYCLICK++;
-          COWSCLICK ++;
-          
-          total_animal = Object.keys(total_animal_obj).length;
-          total_animal_array = Object.values(total_animal_obj);
-          var random_num 	= total_animal_array[Math.floor(Math.random()*total_animal_array.length)];
-          $('#tr'+GAMECLICK).css('background-color','#ffff99');
-          var randomtd = $('#tr'+GAMECLICK+' td').eq(random_num);
-          $(randomtd).actionOn();
+        GAMECLICK++;
+        FARMERCLICKS++;
+        BUNNYCLICK++;
+        COWSCLICK ++;
+        total_animal = Object.keys(total_animal_obj).length;
+        total_animal_array = Object.values(total_animal_obj);
+        var random_num 	= total_animal_array[Math.floor(Math.random()*total_animal_array.length)];
+        $('#tr'+GAMECLICK).css('background-color','#ffff99');
+        var randomtd = $('#tr'+GAMECLICK+' td').eq(random_num);
+        $(randomtd).actionOn();
       }else{
           var result_msg = checkWhoisRemained();
           $('#game_status strong').text(result_msg);
-          //return false;
       }
       $('#totalClicks').text(GAMECLICK);
   });
@@ -57,15 +55,14 @@ $.fn.actionOn = function(){
     actiontd.css('background-color','green').html('fed');
 }
 function checkWhoisRemained(){
-  //console.log('total_animal_obj',total_animal_obj);
     var lb = Object.keys(bunnies).length; // count remained bunnies
     var lc = Object.keys(cows).length;// count remained cows
-    
     if(lb >0  && lc>0){
         msg = 'Conratulations! You are the Winner !';
     }else{
       var msg ='You loss the game! To win the game, you must have a Cow and a bunnie alive';
     }
+    $('#game_status strong').text(msg);
     alert(msg);
 }
 function checkWhoIsDead(obj_animal){
@@ -87,11 +84,10 @@ function changeScoreBoard(animal_number){
         $('.animal-all').css('background-color','red');
         var msg = 'Game is Over! You loss the Game! , Please try you luck again.';
         $('#game_status strong').text(msg);
-        alert(msg);
-
         $('#starGame').attr("disabled", true);
-            $('#farmer_dead').text('1').css('background-color','red');
-            $('#totalClicks').text(GAMECLICK);
+        $('#farmer_dead').text('1').css('background-color','red');
+        $('#totalClicks').text(GAMECLICK);
+        alert(msg);
     }
     if(animal_number>1 && animal_number<4){
         var cd = parseInt($('#cows_dead').text());
